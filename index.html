@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ưu đãi chăm sóc cá nhân – Thẻ sản phẩm cải tiến</title>
+  <meta name="description" content="Bài tập cải tiến thẻ sản phẩm: hiển thị rõ giá cuối, giá gốc và số tiền tiết kiệm.">
+  <!-- Font Be Vietnam Pro hỗ trợ đầy đủ dấu tiếng Việt; nếu mất mạng, trang tự dùng font hệ thống -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Vùng đầu trang: tên cửa hàng và lời giải thích về giá -->
+  <header class="site-header">
+    <div class="container">
+      <p class="site-header__brand">Góc Chăm Sóc</p>
+      <h1 class="site-header__title">Ưu đãi chăm sóc cá nhân tuần này</h1>
+      <p class="site-header__note">Giá hiển thị là giá bạn trả cho 1 sản phẩm, đã gồm giảm giá của shop. Chưa gồm phí vận chuyển và voucher.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="catalog" aria-labelledby="catalog-title">
+      <div class="catalog__head">
+        <h2 id="catalog-title" class="catalog__title">Chăm sóc da và cơ thể</h2>
+        <p class="catalog__count">6 sản phẩm</p>
+      </div>
+
+      <!-- Danh sách thẻ sản phẩm: dùng ul/li để trình đọc màn hình đọc được số lượng mục -->
+      <ul class="product-grid">
+
+        <!-- Thẻ 1: có giảm giá -->
+        <li>
+          <article class="product-card">
+            <div class="product-card__media">
+              <img src="images/sua-rua-mat.svg" alt="Tuýp sữa rửa mặt màu xanh lá" width="400" height="400" loading="lazy">
+              <span class="badge"><span class="visually-hidden">Giảm 30%</span><span aria-hidden="true">−30%</span></span>
+            </div>
+            <div class="product-card__body">
+              <h3 class="product-card__name">Sữa rửa mặt trà xanh cho da dầu 150ml</h3>
+              <!-- Cụm giá: mọi thông tin ưu đãi đặt ở đây, không rải ra nơi khác -->
+              <div class="price">
+                <p class="price__final">
+                  <span class="visually-hidden">Giá bán:</span>
+                  <data value="129000">129.000₫</data>
+                </p>
+                <p class="price__meta">
+                  <del class="price__original"><span class="visually-hidden">Giá gốc:</span>185.000₫</del>
+                  <span class="price__saving">Tiết kiệm 56.000₫</span>
+                </p>
+              </div>
+              <p class="product-card__social">
+                <span class="rating"><span aria-hidden="true">★</span> <span class="visually-hidden">Đánh giá </span>4,8<span class="visually-hidden"> trên 5</span></span>
+                <span>Đã bán 1,2k</span>
+              </p>
+              <button type="button" class="btn" aria-label="Thêm Sữa rửa mặt trà xanh vào giỏ">Thêm vào giỏ</button>
+            </div>
+          </article>
+        </li>
+
+        <!-- Thẻ 2: có giảm giá -->
+        <li>
+          <article class="product-card">
+            <div class="product-card__media">
+              <img src="images/kem-chong-nang.svg" alt="Chai kem chống nắng màu cam" width="400" height="400" loading="lazy">
+              <span class="badge"><span class="visually-hidden">Giảm 22%</span><span aria-hidden="true">−22%</span></span>
+            </div>
+            <div class="product-card__body">
+              <h3 class="product-card__name">Kem chống nắng SPF50+ PA++++ kiềm dầu 50ml</h3>
+              <div class="price">
+                <p class="price__final">
+                  <span class="visually-hidden">Giá bán:</span>
+                  <data value="249000">249.000₫</data>
+                </p>
+                <p class="price__meta">
+                  <del class="price__original"><span class="visually-hidden">Giá gốc:</span>320.000₫</del>
+                  <span class="price__saving">Tiết kiệm 71.000₫</span>
+                </p>
+              </div>
+              <p class="product-card__social">
+                <span class="rating"><span aria-hidden="true">★</span> <span class="visually-hidden">Đánh giá </span>4,9<span class="visually-hidden"> trên 5</span></span>
+                <span>Đã bán 5,6k</span>
+              </p>
+              <button type="button" class="btn" aria-label="Thêm Kem chống nắng SPF50+ vào giỏ">Thêm vào giỏ</button>
+            </div>
+          </article>
+        </li>
+
+        <!-- Thẻ 3: có giảm giá -->
+        <li>
+          <article class="product-card">
+            <div class="product-card__media">
+              <img src="images/nuoc-tay-trang.svg" alt="Chai nước tẩy trang màu xanh dương" width="400" height="400" loading="lazy">
+              <span class="badge"><span class="visually-hidden">Giảm 24%</span><span aria-hidden="true">−24%</span></span>
+            </div>
+            <div class="product-card__body">
+              <h3 class="product-card__name">Nước tẩy trang dịu nhẹ cho da nhạy cảm 400ml</h3>
+              <div class="price">
+                <p class="price__final">
+                  <span class="visually-hidden">Giá bán:</span>
+                  <data value="159000">159.000₫</data>
+                </p>
+                <p class="price__meta">
+                  <del class="price__original"><span class="visually-hidden">Giá gốc:</span>210.000₫</del>
+                  <span class="price__saving">Tiết kiệm 51.000₫</span>
+                </p>
+              </div>
+              <p class="product-card__social">
+                <span class="rating"><span aria-hidden="true">★</span> <span class="visually-hidden">Đánh giá </span>4,7<span class="visually-hidden"> trên 5</span></span>
+                <span>Đã bán 3,1k</span>
+              </p>
+              <button type="button" class="btn" aria-label="Thêm Nước tẩy trang vào giỏ">Thêm vào giỏ</button>
+            </div>
+          </article>
+        </li>
+
+        <!-- Thẻ 4: KHÔNG giảm giá – kiểm tra thẻ vẫn gọn khi thiếu giá gốc -->
+        <li>
+          <article class="product-card">
+            <div class="product-card__media">
+              <img src="images/dau-goi.svg" alt="Chai dầu gội có vòi bơm màu tím" width="400" height="400" loading="lazy">
+            </div>
+            <div class="product-card__body">
+              <h3 class="product-card__name">Dầu gội thảo mộc giảm gãy rụng 650ml</h3>
+              <div class="price">
+                <p class="price__final price__final--regular">
+                  <span class="visually-hidden">Giá bán:</span>
+                  <data value="165000">165.000₫</data>
+                </p>
+                <p class="price__meta">
+                  <span class="price__plain">Giá niêm yết, không giảm</span>
+                </p>
+              </div>
+              <p class="product-card__social">
+                <span class="rating"><span aria-hidden="true">★</span> <span class="visually-hidden">Đánh giá </span>4,6<span class="visually-hidden"> trên 5</span></span>
+                <span>Đã bán 820</span>
+              </p>
+              <button type="button" class="btn" aria-label="Thêm Dầu gội thảo mộc vào giỏ">Thêm vào giỏ</button>
+            </div>
+          </article>
+        </li>
+
+        <!-- Thẻ 5: có giảm giá -->
+        <li>
+          <article class="product-card">
+            <div class="product-card__media">
+              <img src="images/sua-duong-the.svg" alt="Chai sữa dưỡng thể màu hồng đất" width="400" height="400" loading="lazy">
+              <span class="badge"><span class="visually-hidden">Giảm 30%</span><span aria-hidden="true">−30%</span></span>
+            </div>
+            <div class="product-card__body">
+              <h3 class="product-card__name">Sữa dưỡng thể cấp ẩm hương hoa nhài 400ml</h3>
+              <div class="price">
+                <p class="price__final">
+                  <span class="visually-hidden">Giá bán:</span>
+                  <data value="172000">172.000₫</data>
+                </p>
+                <p class="price__meta">
+                  <del class="price__original"><span class="visually-hidden">Giá gốc:</span>245.000₫</del>
+                  <span class="price__saving">Tiết kiệm 73.000₫</span>
+                </p>
+              </div>
+              <p class="product-card__social">
+                <span class="rating"><span aria-hidden="true">★</span> <span class="visually-hidden">Đánh giá </span>4,8<span class="visually-hidden"> trên 5</span></span>
+                <span>Đã bán 2,4k</span>
+              </p>
+              <button type="button" class="btn" aria-label="Thêm Sữa dưỡng thể vào giỏ">Thêm vào giỏ</button>
+            </div>
+          </article>
+        </li>
+
+        <!-- Thẻ 6: có giảm giá, sản phẩm combo -->
+        <li>
+          <article class="product-card">
+            <div class="product-card__media">
+              <img src="images/kem-danh-rang.svg" alt="Hai tuýp kem đánh răng màu xanh ngọc" width="400" height="400" loading="lazy">
+              <span class="badge"><span class="visually-hidden">Giảm 30%</span><span aria-hidden="true">−30%</span></span>
+            </div>
+            <div class="product-card__body">
+              <h3 class="product-card__name">Combo 2 kem đánh răng than tre 180g</h3>
+              <div class="price">
+                <p class="price__final">
+                  <span class="visually-hidden">Giá bán:</span>
+                  <data value="69000">69.000₫</data>
+                </p>
+                <p class="price__meta">
+                  <del class="price__original"><span class="visually-hidden">Giá gốc:</span>98.000₫</del>
+                  <span class="price__saving">Tiết kiệm 29.000₫</span>
+                </p>
+              </div>
+              <p class="product-card__social">
+                <span class="rating"><span aria-hidden="true">★</span> <span class="visually-hidden">Đánh giá </span>4,9<span class="visually-hidden"> trên 5</span></span>
+                <span>Đã bán 10k+</span>
+              </p>
+              <button type="button" class="btn" aria-label="Thêm Combo 2 kem đánh răng vào giỏ">Thêm vào giỏ</button>
+            </div>
+          </article>
+        </li>
+
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Bài tập cá nhân Chương 1 – Phát triển ứng dụng WEB/TMĐT, UEH. Sản phẩm và giá là dữ liệu mẫu.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,346 @@
+/* =========================================================
+   style.css – Thẻ sản phẩm cải tiến
+   Thứ tự: 1 Tokens · 2 Base · 3 Layout · 4 Components
+           5 Utilities · 6 Media queries
+   Viết theo hướng mobile-first: kiểu mặc định dành cho
+   điện thoại, màn hình lớn hơn được bổ sung ở phần 6.
+   ========================================================= */
+
+/* ---------- 1. TOKENS: biến dùng chung toàn trang ---------- */
+:root {
+  /* Màu – tỷ lệ tương phản đo trên nền trắng */
+  --ink: #1F2A44;        /* chữ chính, 14,3:1 */
+  --muted: #5F6B7A;      /* giá gốc, chữ phụ, 5,4:1 */
+  --price: #C8102E;      /* giá cuối, nhãn %, 5,9:1 */
+  --save: #0E7A4D;       /* số tiền tiết kiệm, 5,4:1 */
+  --save-bg: #E6F4EC;    /* nền nhãn tiết kiệm (chữ xanh trên nền này 4,7:1) */
+  --surface: #F4F6F8;    /* nền trang */
+  --card: #FFFFFF;       /* nền thẻ */
+  --line: #DCE1E7;       /* viền thẻ */
+  --focus: #2563EB;      /* viền focus khi dùng bàn phím */
+
+  /* Chữ */
+  --font: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --fs-xs: 0.75rem;      /* 12px */
+  --fs-sm: 0.875rem;     /* 14px */
+  --fs-md: 1rem;         /* 16px */
+  --fs-price: 1.25rem;   /* 20px – giá cuối to nhất trong thẻ */
+  --fs-h1: 1.5rem;       /* 24px */
+
+  /* Khoảng cách & bo góc */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --radius-card: 12px;
+  --radius-pill: 999px;
+  --gap-grid: 12px;      /* đổi theo màn hình ở phần 6 */
+}
+
+/* ---------- 2. BASE: reset tối thiểu và kiểu chữ ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: var(--fs-md);
+  line-height: 1.5;
+  color: var(--ink);
+  background: var(--surface);
+}
+
+h1, h2, h3, p {
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- 3. LAYOUT: khung trang và lưới ---------- */
+.container {
+  width: 100%;
+  max-width: 1200px;     /* giới hạn chiều rộng trên màn hình lớn */
+  margin-inline: auto;   /* căn giữa */
+  padding-inline: var(--space-4);
+}
+
+.site-header {
+  background: var(--card);
+  border-bottom: 1px solid var(--line);
+  padding-block: var(--space-6);
+}
+
+.site-header__brand {
+  font-size: var(--fs-sm);
+  font-weight: 700;
+  color: var(--ink);     /* không dùng màu đỏ: đỏ chỉ dành cho giá */
+}
+
+.site-header__title {
+  font-size: var(--fs-h1);
+  line-height: 1.25;
+  margin-top: var(--space-1);
+}
+
+.site-header__note {
+  max-width: 60ch;       /* giữ dòng ngắn, dễ đọc */
+  margin-top: var(--space-2);
+  font-size: var(--fs-sm);
+  color: var(--muted);
+}
+
+.catalog {
+  padding-block: var(--space-6);
+}
+
+.catalog__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.catalog__title {
+  font-size: 1.125rem;
+}
+
+.catalog__count {
+  font-size: var(--fs-sm);
+  color: var(--muted);
+}
+
+/* Lưới sản phẩm: 2 cột trên điện thoại (mặc định) */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* minmax(0,1fr) chống tràn khi tên dài */
+  gap: var(--gap-grid);
+}
+
+.product-grid > li {
+  display: flex;         /* để thẻ cao bằng nhau trong cùng hàng */
+}
+
+.site-footer {
+  padding-block: var(--space-6);
+  font-size: var(--fs-xs);
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+}
+
+/* ---------- 4. COMPONENTS ---------- */
+
+/* 4.1 Thẻ sản phẩm */
+.product-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  overflow: hidden;      /* cắt ảnh theo bo góc */
+}
+
+.product-card__media {
+  position: relative;    /* mốc định vị cho nhãn % */
+  aspect-ratio: 1 / 1;   /* ảnh vuông, không nhảy bố cục */
+  background: var(--surface);
+}
+
+.product-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  flex: 1;               /* chiếm phần còn lại, đẩy nút xuống đáy */
+  padding: var(--space-3);
+}
+
+.product-card__name {
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  line-height: 1.4;
+  /* Giới hạn 2 dòng; giữ chiều cao cố định để hàng giá thẳng hàng giữa các thẻ */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: calc(2 * 1.4em);
+}
+
+.product-card__social {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  font-size: var(--fs-xs);
+  color: var(--muted);
+}
+
+.rating {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+/* 4.2 Cụm giá – trọng tâm của bản cải tiến */
+.price {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.price__final {
+  font-size: var(--fs-price);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--price);
+  font-variant-numeric: tabular-nums; /* chữ số cùng độ rộng, dễ so sánh giữa các thẻ */
+}
+
+.price__final--regular {
+  color: var(--ink);     /* không giảm giá thì không dùng màu đỏ khuyến mãi */
+}
+
+.price__meta {
+  display: flex;
+  flex-wrap: wrap;       /* xuống dòng trên màn hình hẹp thay vì tràn */
+  align-items: center;
+  gap: var(--space-1) var(--space-2);
+  font-size: var(--fs-xs);
+  min-height: 1.5rem;    /* giữ chỗ để thẻ không giảm giá cao bằng thẻ khác */
+}
+
+.price__original {
+  color: var(--muted);
+  text-decoration-thickness: 1px;
+}
+
+.price__saving {
+  padding: 2px var(--space-2);
+  border-radius: var(--radius-pill);
+  background: var(--save-bg);
+  color: var(--save);
+  font-weight: 500;
+  white-space: nowrap;   /* không cắt đôi số tiền */
+}
+
+.price__plain {
+  color: var(--muted);
+}
+
+/* 4.3 Nhãn phần trăm trên ảnh */
+.badge {
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  padding: 2px var(--space-2);
+  border-radius: 6px;
+  background: var(--price);
+  color: #FFFFFF;
+  font-size: var(--fs-xs);
+  font-weight: 700;
+}
+
+/* 4.4 Nút hành động */
+.btn {
+  margin-top: auto;      /* luôn nằm ở đáy thẻ */
+  min-height: 44px;      /* vùng bấm 44px (WCAG 2.5.5, mức AAA) */
+  width: 100%;
+  padding: var(--space-2) var(--space-3);
+  border: 0;
+  border-radius: 8px;
+  background: var(--ink);
+  color: #FFFFFF;
+  font: inherit;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #2E3D5F;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+/* Viền focus chỉ hiện khi dùng bàn phím */
+.btn:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* ---------- 5. UTILITIES ---------- */
+
+/* Ẩn khỏi mắt nhưng trình đọc màn hình vẫn đọc (dùng cho "Giá gốc:", "Giá bán:") */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Tôn trọng thiết lập giảm chuyển động của hệ điều hành */
+@media (prefers-reduced-motion: reduce) {
+  .btn:active {
+    transform: none;
+  }
+}
+
+/* ---------- 6. MEDIA QUERIES: mở rộng cho màn hình lớn ---------- */
+
+/* Máy tính bảng: 3 cột */
+@media (min-width: 768px) {
+  :root {
+    --gap-grid: 16px;
+    --fs-h1: 1.875rem;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .product-card__name {
+    font-size: var(--fs-md);
+  }
+}
+
+/* Máy tính: giữ 3 cột, thẻ rộng hơn
+   (tự điều chỉnh: 4 cột với 6 sản phẩm để lại hàng cuối chỉ có 2 thẻ) */
+@media (min-width: 1024px) {
+  :root {
+    --fs-price: 1.375rem; /* 22px */
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .product-card__body {
+    padding: var(--space-4);
+  }
+}
