@@ -153,6 +153,7 @@ ul {
   border: 1px solid var(--line);
   border-radius: var(--radius-card);
   overflow: hidden;      /* cắt ảnh theo bo góc */
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .product-card__media {
@@ -187,9 +188,20 @@ ul {
   min-height: calc(2 * 1.4em);
 }
 
+/* Điện thoại: thẻ chỉ rộng ~170px nên tên 2 dòng bị cắt mất dung tích
+   (150ml, 50ml…) – thông tin quyết định mua. Cho phép 3 dòng dưới 768px. */
+@media (max-width: 767px) {
+  .product-card__name {
+    -webkit-line-clamp: 3;
+    min-height: calc(3 * 1.4em);
+  }
+}
+
 .product-card__social {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between; /* đánh giá bên trái, số đã bán bên phải */
+  align-items: center;
   gap: var(--space-2);
   font-size: var(--fs-xs);
   color: var(--muted);
@@ -228,6 +240,15 @@ ul {
   min-height: 1.5rem;    /* giữ chỗ để thẻ không giảm giá cao bằng thẻ khác */
 }
 
+/* Điện thoại: cụm giá gốc + nhãn tiết kiệm xuống 2 dòng (cao 44px), còn thẻ
+   không giảm giá chỉ cao 36px → hàng đánh giá lệch giữa hai thẻ cạnh nhau. */
+@media (max-width: 767px) {
+  .price__meta {
+    min-height: 44px;
+    align-content: flex-start;
+  }
+}
+
 .price__original {
   color: var(--muted);
   text-decoration-thickness: 1px;
@@ -261,7 +282,6 @@ ul {
 
 /* 4.4 Nút hành động */
 .btn {
-  margin-top: auto;      /* luôn nằm ở đáy thẻ */
   min-height: 44px;      /* vùng bấm 44px (WCAG 2.5.5, mức AAA) */
   width: 100%;
   padding: var(--space-2) var(--space-3);
@@ -273,10 +293,66 @@ ul {
   font-size: var(--fs-sm);
   font-weight: 500;
   cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
 }
 
-.btn:hover {
-  background: #2E3D5F;
+/* 4.5 Hàng nút thao tác – thực hành Flexbox (Buổi 2) */
+.product-actions {
+  display: flex;
+  align-items: stretch;  /* hai nút cao bằng nhau */
+  gap: var(--space-2);   /* khoảng cách giữa hai nút, không cần margin */
+  margin-top: auto;      /* đẩy cả hàng nút xuống đáy thẻ */
+}
+
+.product-actions .btn {
+  flex: 1;               /* nút chính chiếm phần còn lại */
+  width: auto;
+}
+
+.btn-icon {
+  flex: none;
+  width: 44px;
+  min-height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--card);
+  color: var(--ink);
+  font-size: 1.25rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+/* Điện thoại: thêm nút Yêu thích khiến chữ "Thêm vào giỏ" bị xuống 2 dòng
+   (vùng cho nút chính chỉ còn ~97px). Giảm padding ngang và giữ chữ 1 dòng. */
+@media (max-width: 767px) {
+  .product-actions .btn {
+    padding-inline: var(--space-1);
+    font-size: 0.8125rem; /* 13px */
+    white-space: nowrap;
+  }
+}
+
+/* Hiệu ứng hover chỉ áp dụng khi có chuột, tránh "dính" trên điện thoại */
+@media (hover: hover) {
+  .btn:hover {
+    background: #2E3D5F;
+  }
+
+  .btn-icon:hover {
+    color: var(--price);
+    border-color: var(--price);
+  }
+
+  .product-card:hover {
+    border-color: #B8C1CC;
+    box-shadow: 0 8px 20px rgba(31, 42, 68, 0.10);
+  }
+}
+
+/* Khi một nút trong thẻ được chọn bằng bàn phím, viền thẻ đổi màu để dễ định vị */
+.product-card:focus-within {
+  border-color: var(--focus);
 }
 
 .btn:active {
@@ -284,7 +360,8 @@ ul {
 }
 
 /* Viền focus chỉ hiện khi dùng bàn phím */
-.btn:focus-visible {
+.btn:focus-visible,
+.btn-icon:focus-visible {
   outline: 3px solid var(--focus);
   outline-offset: 2px;
 }
