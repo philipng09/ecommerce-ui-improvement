@@ -40,3 +40,23 @@ Tên công cụ: [Tên công cụ AI]
 - `<data value="129000">` lưu giá trị số máy đọc được.
 - Biến CSS trên `:root` và cách thay đổi giá trị trong media query.
 - Tiêu chí WCAG 2.2: tương phản 4,5:1 (1.4.3) và vùng bấm tối thiểu 24×24px (2.5.8).
+
+---
+
+# Buổi 2 – HTML5 & CSS3
+
+## Công cụ
+Claude
+
+## Prompt đã dùng
+- **Prompt 1 – Phân tích mã nguồn hiện tại:** dán index.html và style.css, yêu cầu xác định thành phần HTML đã có, còn thiếu, 3 vấn đề, đề xuất cải thiện và thứ tự thực hiện; chưa viết lại toàn bộ mã.
+- **Prompt 2 – Kiểm tra cấu trúc HTML5:** kiểm tra header/main/section/article/footer, thứ bậc h1–h3, img/alt, nút; phân biệt lỗi cần sửa và đề xuất.
+- **Prompt 5 – Thực hành Flexbox:** HTML khu vực nút của thẻ, yêu cầu display: flex, justify-content, align-items, gap.
+- **Prompt 7 – Hiệu ứng CSS:** hover nhẹ, transition, focus-visible, không làm xê dịch bố cục.
+- **Prompt 8 – Kiểm tra lỗi:** mô tả lỗi chữ "Thêm vào giỏ" xuống 2 dòng ở 390px; phân biệt nguyên nhân đã xác định và giả thuyết.
+
+## Kiểm tra và tự điều chỉnh
+- **Áp dụng:** sửa aria-label của nút (WCAG 2.5.3); tên 3 dòng và min-height 44px cho dòng giá phụ trên điện thoại; hàng nút Flexbox; transition và focus.
+- **Điều chỉnh:** đề xuất thêm nút Yêu thích với `flex: 1` cho nút chính làm chữ "Thêm vào giỏ" xuống 2 dòng ở 390px → thêm media query giảm padding ngang còn 4px, cỡ chữ 13px, `white-space: nowrap`; kiểm tra lại ở 390, 360, 320px.
+- **Không áp dụng:** thêm thanh `nav` – trang chỉ có một trang, menu sẽ là liên kết không có trang đích.
+- **Tự sửa độc lập:** cập nhật nội dung chân trang từ "Chương 1" sang "Buổi 2".

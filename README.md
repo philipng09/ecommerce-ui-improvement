@@ -36,3 +36,19 @@ Mở file `index.html` bằng trình duyệt, hoặc truy cập bản triển kh
 
 ## 7. Hỗ trợ từ AI
 Công cụ AI hỗ trợ đề xuất bảng khảo sát, phương án thiết kế và mã nguồn ban đầu. Tôi đã kiểm tra lại trên Shopee, chạy thử ở nhiều kích thước màn hình và tự chỉnh sửa. Chi tiết trong [AI_USAGE.md](AI_USAGE.md).
+
+## 8. Buổi 2 – HTML5 & CSS3 (bài tập cá nhân)
+**Khu vực cải tiến:** thẻ sản phẩm (tiếp tục từ Buổi 1).
+
+**Kỹ thuật đã thực hành:** HTML5 có ngữ nghĩa, element/class/descendant selector, Box Model, Flexbox, CSS Grid, hover và focus.
+
+**Thay đổi đã thực hiện:**
+- Điện thoại (< 768px): tên sản phẩm hiển thị tối đa 3 dòng để không mất dung tích (150ml, 50ml…).
+- Điện thoại: dòng giá phụ luôn cao 44px để hàng đánh giá thẳng hàng giữa các thẻ.
+- Bỏ `aria-label` trên nút "Thêm vào giỏ" (không chứa nhãn hiển thị – WCAG 2.5.3), thay bằng tên sản phẩm dạng chữ ẩn.
+- Thêm hàng nút `.product-actions` (Flexbox) gồm "Thêm vào giỏ" và nút Yêu thích; hàng đánh giá dùng `justify-content: space-between`.
+- Thêm `transition`, hover chỉ áp dụng cho thiết bị có chuột, `:focus-visible` cho nút và `:focus-within` cho thẻ.
+
+**Cách kiểm tra responsive:** mở `index.html` trên Chrome → F12 → Ctrl + Shift + M → thử chiều rộng 1366, 768, 390 và 320px.
+
+**Hạn chế:** nút Yêu thích và Thêm vào giỏ mới là giao diện, chưa có JavaScript (dự kiến Buổi 3). Ở 320px, một số tên rất dài vẫn bị cắt sau 3 dòng.
