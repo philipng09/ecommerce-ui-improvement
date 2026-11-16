@@ -1,0 +1,124 @@
+/* ============================================================
+   JavaScript Labs – Nguyễn Nhật Phi
+   Trang chủ portfolio và trang danh sách Exercise của từng Lab
+   ============================================================ */
+:root {
+  --green: #0c513f;
+  --green-2: #1d6a55;
+  --yellow: #ffc501;
+  --cream: #fefbf0;
+  --ink: #12332b;
+  --muted: #587269;
+  --line: #dce7df;
+  --radius: 18px;
+  --shadow: 0 10px 28px rgba(12, 81, 63, 0.12);
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: "Segoe UI", Arial, sans-serif; color: var(--ink); background: var(--cream); line-height: 1.6; }
+a { color: var(--green); }
+img { max-width: 100%; }
+code, kbd { padding: 1px 6px; border-radius: 6px; background: #e5f0e8; font-size: 0.9em; }
+
+.wrap { width: min(1100px, 100% - 40px); margin: 0 auto; }
+.narrow { width: min(820px, 100% - 40px); }
+.eyebrow { margin: 0 0 6px; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--yellow); }
+
+/* Nút */
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 20px; border-radius: 999px; font-weight: 700; text-decoration: none; transition: transform .2s ease, background-color .2s ease; }
+.btn-primary { background: var(--yellow); color: #052f28; }
+.btn-ghost { border: 1.5px solid rgba(255,255,255,.6); color: #fff; }
+.btn:hover { transform: translateY(-2px); }
+.btn:focus-visible, .tab:focus-visible, .site-nav a:focus-visible, .menu-btn:focus-visible { outline: 3px solid #052f28; outline-offset: 2px; box-shadow: 0 0 0 6px var(--yellow); }
+
+/* Thanh điều hướng */
+.topbar { position: sticky; top: 0; z-index: 10; background: rgba(254, 251, 240, .95); border-bottom: 1px solid var(--line); backdrop-filter: blur(6px); }
+.topbar-inner { display: flex; align-items: center; justify-content: space-between; min-height: 64px; }
+.brand { display: flex; align-items: center; gap: 10px; font-weight: 800; color: var(--ink); text-decoration: none; }
+.brand-mark { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 9px; background: var(--green); color: var(--yellow); font-size: 14px; }
+.site-nav { display: flex; gap: 24px; }
+.site-nav a { color: var(--ink); font-weight: 600; text-decoration: none; }
+.site-nav a:hover { color: var(--green-2); }
+.menu-btn { display: none; width: 44px; height: 44px; border: 0; border-radius: 12px; background: #e5f0e8; font-size: 20px; cursor: pointer; }
+
+/* Hero – thông tin cá nhân */
+.hero { padding: 48px 0; background: linear-gradient(120deg, var(--green), #063e32); color: #fff; }
+.hero-inner { display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center; }
+.hero h1 { margin: 0 0 12px; font-size: clamp(30px, 4vw, 44px); line-height: 1.15; }
+.info-list { list-style: none; margin: 0 0 20px; padding: 0; color: #e5f0e8; }
+.info-list span { display: inline-block; min-width: 110px; color: var(--yellow); font-weight: 700; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.stats { display: grid; gap: 12px; margin: 0; }
+.stats div { padding: 14px 20px; border-radius: 14px; background: rgba(255,255,255,.08); text-align: center; }
+.stat-num { font-size: 30px; font-weight: 800; color: var(--yellow); }
+.stats dd { margin: 0; font-size: 13px; color: #e5f0e8; }
+
+/* Các khu vực */
+.section { padding: 56px 0; }
+.section-alt { background: #fff; }
+.section h2 { margin: 0 0 20px; font-size: 28px; }
+
+/* Thẻ Lab */
+.lab-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.lab-card { display: flex; flex-direction: column; padding: 24px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--cream); transition: transform .2s ease, box-shadow .2s ease; }
+.lab-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.lab-no { margin: 0; font-size: 13px; font-weight: 800; letter-spacing: .08em; color: var(--green-2); }
+.lab-card h3 { margin: 6px 0 10px; font-size: 20px; }
+.lab-card p { margin: 0 0 12px; color: var(--muted); }
+.lab-meta { font-size: 14px; font-weight: 700; }
+.lab-card .btn { margin-top: auto; align-self: flex-start; }
+
+/* Tabs kiến thức */
+.tabs { display: flex; gap: 8px; margin-bottom: 18px; border-bottom: 1px solid var(--line); }
+.tab { padding: 10px 16px; border: 0; border-bottom: 3px solid transparent; background: none; font: inherit; font-weight: 700; color: var(--muted); cursor: pointer; }
+.tab.is-active { color: var(--ink); border-bottom-color: var(--yellow); }
+.learn-list { margin: 0; padding-left: 20px; }
+.learn-list li { margin-bottom: 10px; }
+
+/* Tự đánh giá */
+.summary { padding: 22px 26px; border-left: 5px solid var(--yellow); border-radius: 0 var(--radius) var(--radius) 0; background: var(--cream); }
+.summary p { margin: 0; }
+.apply-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 22px; }
+.apply { padding: 16px; border: 1px solid var(--line); border-radius: 14px; }
+.apply strong { display: block; color: var(--green); }
+.apply span { font-size: 14px; color: var(--muted); }
+
+/* Trang danh sách Exercise của từng Lab */
+.lab-hero { padding: 40px 0; background: linear-gradient(120deg, var(--green), #063e32); color: #fff; }
+.lab-hero h1 { margin: 0 0 8px; font-size: clamp(26px, 3.4vw, 38px); }
+.lab-hero p { margin: 0; color: #e5f0e8; max-width: 760px; }
+.lab-hero .back { display: inline-block; margin-bottom: 14px; color: var(--yellow); font-weight: 700; text-decoration: none; }
+.ex-list { list-style: none; margin: 32px auto; padding: 0; display: grid; gap: 12px; }
+.ex-link { display: grid; grid-template-columns: 64px 1fr auto; gap: 16px; align-items: center; padding: 16px 20px; border: 1px solid var(--line); border-radius: 14px; background: #fff; color: var(--ink); text-decoration: none; transition: transform .2s ease, box-shadow .2s ease; }
+.ex-link:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+.ex-num { display: grid; place-items: center; height: 44px; border-radius: 12px; background: var(--green); color: var(--yellow); font-weight: 800; }
+.ex-body strong { display: block; }
+.ex-body small { color: var(--muted); }
+.ex-file { font-family: Consolas, monospace; font-size: 13px; color: var(--muted); }
+.tip { margin-bottom: 40px; color: var(--muted); }
+
+.site-footer { padding: 24px 0; background: #063e32; color: #e5f0e8; font-size: 14px; }
+.site-footer a { color: var(--yellow); }
+
+/* Máy tính bảng */
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .stats { grid-column: 1 / -1; grid-template-columns: repeat(3, 1fr); }
+  .lab-grid { grid-template-columns: 1fr; }
+  .apply-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Điện thoại */
+@media (max-width: 640px) {
+  .menu-btn { display: block; }
+  .site-nav { display: none; position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; gap: 0; padding: 8px 20px; background: var(--cream); border-bottom: 1px solid var(--line); }
+  .site-nav.is-open { display: flex; }
+  .site-nav a { padding: 12px 0; }
+  .hero-inner { grid-template-columns: 1fr; text-align: center; }
+  .info-list span { display: block; min-width: 0; }
+  .hero-actions { justify-content: center; }
+  .ex-link { grid-template-columns: 52px 1fr; }
+  .ex-file { grid-column: 2; }
+  .apply-grid { grid-template-columns: 1fr; }
+}
