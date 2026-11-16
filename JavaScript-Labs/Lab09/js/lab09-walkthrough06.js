@@ -1,0 +1,22 @@
+
+// this variable has global scope
+var boxClass = 'movingDiv';
+
+function outputBox(num) {
+   var box = "<div class='" + boxClass + "' id='div" + num + "'>";
+   box += "This is div " + num;
+   box += "</div>";
+   return box;
+}
+
+/* your code goes here */
+// Exercise 9.6 – Debugging events (bước 7)
+// Đặt breakpoint tại dòng alert() trong tab Sources để xem biến e và e.target.
+window.addEventListener("load", function(){
+    var divs = document.querySelectorAll(".movingDiv");
+    for (var i = 0; i < divs.length; i++) {
+        divs[i].addEventListener("mouseover", function (e) {
+            alert("triggered by " + e.target.id);
+        });
+    }
+});
