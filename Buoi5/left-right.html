@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Bài 2 – Left Right Responsive</title>
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#161616}
+  .site-header{background:#f3f6fb;padding:13px 20px;display:flex;gap:20px;flex-wrap:wrap;justify-content:space-between;align-items:center}
+  .site-header a{color:#174fa5;text-decoration:none;font-weight:bold}
+  .container::after{content:"";display:table;clear:both}
+  .left,.right{min-height:400px;padding:15px}
+  .left{background:blue;float:left;width:70%}
+  .right{background:red;float:right;width:30%}
+  .left .title,.right .title{font-size:18px;font-weight:bold;margin:0 0 10px}
+  .left picture img{display:block;max-width:100%;height:auto;max-height:320px}
+  .meta{font-size:13px;line-height:1.6;padding:14px 20px;background:#f3f6fb}
+  /* Tablet: hai vùng chiếm toàn bộ chiều ngang, xếp chồng */
+  @media only screen and (max-width:768px){
+    .left,.right{width:100%;float:none}
+  }
+  /* Điện thoại: ẩn vùng RIGHT theo yêu cầu đề bài */
+  @media only screen and (max-width:479px){
+    .right{display:none}
+  }
+  /* Khi in: ẩn LEFT, chỉ giữ RIGHT */
+  @media only print{
+    .site-header,.meta,.left{display:none}
+    .right{display:block;float:none;width:100%;background:#fff;min-height:0;border:2px solid #222}
+  }
+</style>
+</head>
+<body>
+  <header class="site-header"><a href="./index.html">← Trang chủ Buổi 5</a><strong>Bài 2 · LEFT & RIGHT Responsive</strong></header>
+  <main class="container">
+    <div class="left">
+      <p class="title">LEFT</p>
+      <picture>
+        <source media="(min-width: 800px)" srcset="./assets/ueh-desktop.svg">
+        <source media="(min-width: 480px)" srcset="./assets/ueh-tablet.svg">
+        <img src="./assets/ueh-mobile.svg" alt="Minh họa chữ UEH UNIVERSITY">
+      </picture>
+    </div>
+    <div class="right"><p class="title">RIGHT</p></div>
+  </main>
+  <footer class="meta">Nguyễn Văn Kiên | MSSV: 31241024550 | Thu nhỏ cửa sổ để kiểm tra responsive: desktop 70/30, tablet xếp dọc, mobile chỉ LEFT. Nhấn Ctrl + P để kiểm tra chế độ in.</footer>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Bài tập cá nhân Buổi 5: Chrome Dino và Left Right Responsive">
+  <title>Bài tập cá nhân Buổi 5 | Nguyễn Văn Kiên</title>
+  <style>
+    :root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color:#17233c;background:#f4f7fc}
+    *{box-sizing:border-box}body{margin:0}a{color:inherit}a:focus-visible{outline:3px solid #ff9b37;outline-offset:4px}
+    .wrap{max-width:1100px;margin:auto;padding:28px 24px 64px}
+    .top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:25px}
+    .brand{font-weight:800;color:#1546a6;font-size:18px;letter-spacing:.03em}.pill{display:inline-block;background:#e8efff;color:#194bb6;border-radius:999px;padding:7px 12px;font-size:13px;font-weight:750}
+    .hero{border-radius:26px;padding:45px;background:linear-gradient(130deg,#143fa9,#2875dd);color:#fff;position:relative;overflow:hidden}
+    .hero:after{content:"";position:absolute;width:360px;height:360px;border:75px solid #ffffff14;border-radius:50%;right:-180px;top:-150px;pointer-events:none}
+    h1{font-size:clamp(30px,5vw,48px);line-height:1.17;margin:16px 0 14px;letter-spacing:-.03em}h2{font-size:24px;margin:34px 0 18px}
+    .hero p{max-width:720px;font-size:16px;line-height:1.7;color:#e4eeff}
+    .profile{display:flex;gap:10px 28px;flex-wrap:wrap;margin-top:24px;font-size:15px}.profile b{color:#fff}
+    .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+    .card{background:#fff;border:1px solid #e4eaf4;border-radius:20px;padding:26px;box-shadow:0 10px 30px #132f6810;display:flex;flex-direction:column}
+    .no{color:#386cd4;font-weight:800;font-size:13px;letter-spacing:.08em}h3{font-size:23px;margin:12px 0}.card p{line-height:1.65;color:#516078;flex:1;margin-top:0}
+    .link{display:inline-flex;align-items:center;gap:12px;width:max-content;max-width:100%;text-decoration:none;background:#1556bf;color:white;font-weight:700;padding:12px 18px;border-radius:10px}
+    .info{margin-top:26px;border:1px solid #e1e9f5;border-radius:17px;padding:22px;background:white;line-height:1.75}.info p{margin:8px 0}
+    footer{font-size:13px;color:#62718b;margin-top:30px;text-align:center}
+    @media(max-width:650px){.wrap{padding:18px 15px 35px}.hero{padding:29px 24px}.cards{grid-template-columns:1fr}.card{padding:23px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="top"><div class="brand">BÀI TẬP CÁ NHÂN</div><span class="pill">BUỔI 05</span></header>
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <span class="pill" style="background:#ffffff20;color:white">Thực hành Web & Chrome DevTools</span>
+        <h1 id="page-title">Những nội dung đã học trong Buổi 5</h1>
+        <p>Thực hành tìm hiểu và thay đổi tham số trò chơi Chrome Dino bằng Console; tạo giao diện Left – Right với HTML, CSS và Media Queries để hiển thị phù hợp trên máy tính, máy tính bảng, điện thoại và khi in.</p>
+        <div class="profile"><span><b>Họ và tên:</b> Nguyễn Văn Kiên</span><span><b>MSSV:</b> 31241024550</span></div>
+      </section>
+      <h2>Danh sách bài tập</h2>
+      <div class="cards">
+        <article class="card">
+          <span class="no">BÀI 01 / DEVTOOLS</span><h3>Chrome Dino Game</h3>
+          <p>Tìm hiểu cách mở Console, thử thay đổi tốc độ chạy, độ cao nhảy và vô hiệu hóa trạng thái Game Over trên phiên bản trò chơi tương thích. Trang bài làm có các câu lệnh và hướng dẫn chụp minh chứng.</p>
+          <a class="link" href="./dino.html">Xem bài Dino <span aria-hidden="true">→</span></a>
+        </article>
+        <article class="card">
+          <span class="no">BÀI 02 / HTML & CSS</span><h3>Left – Right Responsive</h3>
+          <p>Chia giao diện thành hai vùng LEFT 70% và RIGHT 30%, đổi thành bố cục xếp dọc khi màn hình hẹp và ẩn vùng theo Media Query hoặc chế độ in.</p>
+          <a class="link" href="./left-right.html">Xem bài Left – Right <span aria-hidden="true">→</span></a>
+        </article>
+      </div>
+      <section class="info"><strong>Kiến thức rút ra</strong><p>Chrome DevTools giúp quan sát và thử thay đổi hành vi JavaScript ngay trên trang đang chạy. CSS Media Queries cho phép tạo bố cục thích ứng theo kích thước thiết bị và môi trường hiển thị.</p></section>
+    </main>
+    <footer>Nguyễn Văn Kiên · MSSV 31241024550 · Bài tập cá nhân Buổi 5</footer>
+  </div>
+</body>
+</html>
