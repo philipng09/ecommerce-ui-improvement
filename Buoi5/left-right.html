@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bài 2 – Left &amp; Right responsive | Nguyễn Nhật Phi</title>
+<style>
+  :root{--ink:#1d2a44;--paper:#fbfaf6;--left:#1d2a44;--right:#e0a100}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Be Vietnam Pro",system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.6}
+  header{padding:16px 24px}
+  header h1{margin:0;font-size:1.5rem}
+  .size{font-size:.9rem;opacity:.8}
+  a{color:inherit}
+
+  /* Máy tính (> 768px): LEFT 70% – RIGHT 30% nằm ngang */
+  .wrap{display:flex;gap:16px;padding:0 24px 24px;min-height:70vh}
+  .left{flex:0 0 calc(70% - 8px);background:var(--left);color:#fff}
+  .right{flex:0 0 calc(30% - 8px);background:var(--right)}
+  .left,.right{padding:24px;border-radius:8px}
+  .left h2,.right h2{margin-top:0;font-size:2rem}
+
+  /* Máy tính bảng (480–768px): hai vùng xếp dọc, mỗi vùng rộng 100% */
+  @media only screen and (max-width:768px){
+    .wrap{flex-direction:column;padding:0 16px 16px}
+    .left,.right{flex:none;width:100%}
+  }
+
+  /* Điện thoại (≤ 479px): chỉ hiển thị LEFT, ẩn RIGHT */
+  @media only screen and (max-width:479px){
+    .right{display:none}
+    .left h2{font-size:1.5rem}
+  }
+
+  /* Khi in (Ctrl+P): bỏ màu nền để tiết kiệm mực, in cả hai vùng xếp dọc */
+  @media only print{
+    header .size, .back{display:none}
+    .wrap{display:block;padding:0}
+    .left,.right{display:block;background:none;color:#000;border:1px solid #000;margin-bottom:12px}
+  }
+</style>
+</head>
+<body>
+<header>
+  <p class="back"><a href="index.html">← Buổi 5</a></p>
+  <h1>Bài 2: Left &amp; Right responsive</h1>
+  <p class="size">Chế độ hiện tại: <strong id="mode"></strong> (<span id="w"></span>px)</p>
+</header>
+
+<div class="wrap">
+  <section class="left">
+    <h2>LEFT</h2>
+    <p>Vùng nội dung chính. Trên máy tính chiếm 70% chiều ngang, trên máy tính bảng nằm phía trên, và là vùng duy nhất còn hiển thị trên điện thoại.</p>
+  </section>
+  <section class="right">
+    <h2>RIGHT</h2>
+    <p>Vùng phụ, chiếm 30%. Xuống dưới LEFT ở mốc 768px và bị ẩn ở mốc 479px.</p>
+  </section>
+</div>
+
+<script>
+  // Hiển thị chiều rộng cửa sổ và chế độ tương ứng với media query
+  function show(){
+    const w = window.innerWidth;
+    document.getElementById('w').textContent = w;
+    document.getElementById('mode').textContent =
+      w <= 479 ? 'Điện thoại – chỉ LEFT' : w <= 768 ? 'Máy tính bảng – xếp dọc' : 'Máy tính – 70/30';
+  }
+  window.addEventListener('resize', show); show();
+</script>
+</body>
+</html>

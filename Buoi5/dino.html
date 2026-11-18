@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bài 1 – Chrome Dino qua Console | Nguyễn Nhật Phi</title>
+<style>
+  :root{--ink:#1d2a44;--paper:#fbfaf6;--accent:#e0a100;--muted:#5b6478;--code:#22293a}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Be Vietnam Pro",system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.6}
+  main{max-width:720px;margin:0 auto;padding:40px 20px}
+  h1{font-size:clamp(1.7rem,5vw,2.4rem);margin:0 0 8px}
+  h2{margin-top:36px;font-size:1.2rem}
+  .cmd{display:flex;gap:8px;align-items:stretch;margin:12px 0}
+  .cmd code{flex:1;background:var(--code);color:#f5f1e3;padding:12px 14px;border-radius:6px;overflow-x:auto;font-size:.95rem}
+  button{font:inherit;border:2px solid var(--ink);background:#fff;border-radius:6px;padding:0 14px;cursor:pointer}
+  button:focus-visible{outline:3px solid var(--accent)}
+  table{width:100%;border-collapse:collapse;margin-top:12px}
+  th,td{border:1px solid #cfd4de;padding:8px 10px;text-align:left}
+  th{background:#eef0f5}
+  .note{color:var(--muted);font-size:.95rem}
+  a{color:var(--ink)}
+</style>
+</head>
+<body>
+<main>
+  <p><a href="index.html">← Buổi 5</a></p>
+  <h1>Bài 1: Chrome Dino qua Console</h1>
+  <p>Game khủng long của Chrome chạy bằng JavaScript, nên có thể gọi trực tiếp các hàm của nó trong tab Console.</p>
+
+  <h2>Chuẩn bị</h2>
+  <p>Mở <code>chrome://dino</code> (hoặc ngắt mạng rồi vào trang bất kỳ), nhấn F12 rồi chọn tab Console. Nhấn Space để game bắt đầu chạy.</p>
+
+  <h2>Đổi tốc độ chạy</h2>
+  <div class="cmd"><code id="c1">Runner.instance_.setSpeed(20);</code><button data-copy="c1">Sao chép</button></div>
+  <p class="note">Tốc độ mặc định khoảng 6. Giá trị càng lớn, chướng ngại vật lao tới càng nhanh.</p>
+
+  <h2>Đổi độ cao nhảy</h2>
+  <div class="cmd"><code id="c2">Runner.instance_.tRex.setJumpVelocity(20);</code><button data-copy="c2">Sao chép</button></div>
+  <p class="note">Giá trị càng lớn, khủng long nhảy càng cao và lâu chạm đất hơn.</p>
+
+  <h2>Tắt Game Over (thực hành thêm)</h2>
+  <div class="cmd"><code id="c3">Runner.instance_.gameOver = function () {};</code><button data-copy="c3">Sao chép</button></div>
+  <p class="note">Ghi đè hàm gameOver bằng một hàm rỗng, nên khủng long đâm vào xương rồng cũng không thua. Tải lại trang để chơi bình thường.</p>
+
+  <h2>Kiểm tra game đã sẵn sàng chưa</h2>
+  <div class="cmd"><code id="c4">typeof Runner !== 'undefined' &amp;&amp; !!Runner.instance_;</code><button data-copy="c4">Sao chép</button></div>
+  <p class="note">Trả về <code>true</code> là gõ lệnh được. Nếu báo lỗi <code>Runner is not defined</code> thì bạn đang mở Console ở tab khác, không phải tab game.</p>
+
+  <h2>Kết quả thử nghiệm</h2>
+  <table>
+    <thead><tr><th>Lệnh</th><th>Giá trị</th><th>Quan sát</th></tr></thead>
+    <tbody>
+      <tr><td>setSpeed</td><td>20</td><td>[ghi nhận của bạn]</td></tr>
+      <tr><td>setSpeed</td><td>50</td><td>[ghi nhận của bạn]</td></tr>
+      <tr><td>setJumpVelocity</td><td>20</td><td>[ghi nhận của bạn]</td></tr>
+      <tr><td>setJumpVelocity</td><td>5</td><td>[ghi nhận của bạn]</td></tr>
+      <tr><td>gameOver</td><td>hàm rỗng</td><td>[ghi nhận của bạn]</td></tr>
+    </tbody>
+  </table>
+</main>
+<script>
+  // Nút "Sao chép": copy lệnh tương ứng vào clipboard
+  document.querySelectorAll('button[data-copy]').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const text = document.getElementById(btn.dataset.copy).textContent;
+      try { await navigator.clipboard.writeText(text); btn.textContent = 'Đã sao chép'; }
+      catch { btn.textContent = 'Không sao chép được'; }
+      setTimeout(() => btn.textContent = 'Sao chép', 1500);
+    });
+  });
+</script>
+</body>
+</html>
